@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            background-image: url('Study.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+            z-index: 1;
+        }
+
+        header, footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            flex-shrink: 0;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: black;
+            padding: 0;
+        }
+
+        nav ul li:hover > ul {
+            display: block;
+        }
+
+        nav ul ul li {
+            display: block;
+            position: relative;
+        }
+
+        nav ul ul ul {
+            top: 0;
+            left: 100%;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: gray;
+        }
+
+        main {
+          max-width: 800px;
+          margin: 10px auto;
+          padding: 20px;
+          background-color: rgba(255, 255, 255, 0.9); /* Adjust the background opacity */
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          position: relative;
+          z-index: 1;
+          overflow: hidden; /* Prevent scrolling */
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h1, h2 {
+            color: black;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form input, form textarea, form button {
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        form button {
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: darkgray;
+        }
+
+        /* Footer */
+        footer p {
+            margin: 10;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="active" href="#home">Home</a></li>
+                <li>
+                    <a href="#">Courses
+                    <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        <li><a href="WebDesign.html">Web-Design</a></li>
+                        <li><a href="Js.html">JavaScript Essentials</a></li>
+                        <li><a href="FS.html">Full-Stack Web Development</a></li>
+                        <li><a href="MS.html">MERN-Stack Development</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Contact.html">Contact
+                    <i class="fas fa-caret-down"></i>
+                    </a>
+                 </li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to Our Website</h1>
+            <p>Your one-stop solution for web development services.</p>
+        </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We are a team of experienced web developers dedicated to building high-quality websites.</p>
+        </section>
+        <section id="register">
+            <h2>Register for Our Course</h2>
+            <p>Enter your name and email to register for our comprehensive related web development courses. Gain the skills you need to build professional websites from scratch.</p>
+        </section>
+        <section id="contact">
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="number">Mobile Number:</label>
+                <input type="number" id="number" name="number" required>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Simple Webpage. All rights reserved.</p>
+    </footer>
+</body>
+</html>

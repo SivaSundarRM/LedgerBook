@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-image: url('WB.jpg'); /* Your background image */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #f0f0f0; /* Light text color for better contrast */
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+    z-index: 1;
+}
+
+header {
+    background-color: black;
+    color: white;
+    text-align: right; /* Aligns text and elements to the right */
+    padding: 1em 0;
+    z-index: 2;
+    flex-shrink: 0;
+    position: relative; /* Ensure that the positioning is relative */
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end; /* Aligns nav to the right within the header */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center; /* Vertically center items in the nav */
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    background-color: gray;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: black; /* Solid background color for the dropdown */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional: adds a shadow for better visibility */
+    z-index: 1000; /* Ensures the dropdown is above other content */
+}
+
+nav ul ul li {
+    width: 200px;
+}
+
+nav ul li:hover > ul,
+nav ul li:focus-within > ul {
+    display: block;
+}
+
+/* Optional: Add styling for dropdown links */
+nav ul ul li a {
+    padding: 10px 20px;
+    white-space: nowrap; /* Prevents text from wrapping in the dropdown */
+}
+
+nav ul ul li a:hover {
+    background-color: gray;
+}
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker background to enhance text readability */
+    color: #f0f0f0; /* Light text color for contrast */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+    flex: 1; /* Allows main to grow and fill available space */
+    overflow: auto; /* Enable scrolling */
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: Grey; /* Light text color for headings */
+}
+
+footer p {
+    margin: 0;
+}
