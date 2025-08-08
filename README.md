@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Loan Management System
+
+A simple loan tracking application built with **React** and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This app allows you to:
+- Create loans for borrowers with **weekly** or **monthly** repayment schedules.
+- Automatically calculate total payable amounts and per-installment amounts.
+- Track repayments with a **payment history**.
+- View repayment progress with a **progress bar**.
+- Calculate **effective interest earned** based on actual repayment time.
+- Search borrowers and manage loan records.
+
+---
+
+## 🛠 Features
+
+### Loan Creation
+- **Weekly Loans**:  
+  Example: For ₹1000 over 6 months, total repayment = ₹1360  
+  Weekly installment ≈ ₹60 (calculated dynamically).
+- **Monthly Loans**:  
+  Example: ₹1000 with 3% monthly interest → ₹30 per month interest.
+
+### Loan Tracking
+- Payment history with dates and amounts.
+- Remaining balance auto-updated after each payment.
+- Alerts for early payment attempts before the repayment start date.
+
+### UI Enhancements
+- Progress bar for repayment completion.
+- Search bar to quickly find borrower records.
+- Delete loan with confirmation dialog.
+
+---
+
+## 🚀 Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
+Runs the app in development mode.  
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.  
+The page will reload when you make changes.
 
-Runs the app in the development mode.  
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### `npm test`
+Launches the test runner in interactive watch mode.
 
-The page will reload when you make changes.  
-You may also see any lint errors in the console.
+#### `npm run build`
+Builds the app for production in the `build` folder.
 
-### `npm test`
+#### `npm run eject`
+**Warning:** This is a one-way operation. Once you eject, you can’t go back.
 
-Launches the test runner in the interactive watch mode.  
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📚 Learn More
 
-Builds the app for production to the `build` folder.  
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [React Documentation](https://reactjs.org/)
+- [Create React App Documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+- [Deployment Guide](https://facebook.github.io/create-react-app/docs/deployment)
 
-The build is minified and the filenames include the hashes.  
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📦 Deployment
 
-### `npm run eject`
+You can deploy this project on:
+- **Netlify**
+- **Vercel**
+- **GitHub Pages**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Refer to the [deployment guide](https://facebook.github.io/create-react-app/docs/deployment) for more details.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📝 License
+This project is open source and available under the [MIT License](LICENSE).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -5,15 +5,23 @@ import { useLoanManagement } from './hook/useManagement';
 import './App.css';
 
 function App() {
-  const { filteredLoans, searchQuery, setSearchQuery, error, handleCreateLoan, deleteLoan, handleMakePayment } = useLoanManagement();
+  const {
+    filteredLoans,
+    searchQuery,
+    setSearchQuery,
+    error,
+    handleCreateLoan,
+    deleteLoan,
+    handleMakePayment
+  } = useLoanManagement();
 
   return (
-    <div>
+    <div className="app-container">
       <LoanCalculator onCreateLoan={handleCreateLoan} error={error} />
       <LoanList
         loans={filteredLoans}
         onMakePayment={handleMakePayment}
-        onDelete={deleteLoan} // ✅ Ensure deleteLoan is passed
+        onDelete={deleteLoan}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         error={error}
