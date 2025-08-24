@@ -36,7 +36,8 @@ export function useLoanManagement() {
 
   const getLoansWithDetails = useCallback(() => {
     return (data.loans || []).map((loan) => {
-      const borrower = (data.borrowers || []).find((b) => b.id === loan.borrowerId) || { name: "Unknown" };
+      const borrower =
+        (data.borrowers || []).find((b) => b.id === loan.borrowerId) || { name: "Unknown" };
       const payments = (data.payments || []).filter((p) => p.loanId === loan.id);
       return { ...loan, borrower, payments };
     });
@@ -54,7 +55,13 @@ export function useLoanManagement() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   }, [data, searchQuery, getLoansWithDetails]);
 
-  const handleCreateLoan = (name, amount, startDate, interestRate = 3, frequency = "weekly") => {
+  const handleCreateLoan = (
+    name,
+    amount,
+    startDate,
+    interestRate = 3,
+    frequency = "weekly"
+  ) => {
     if (!name.trim()) {
       setError("Borrower name is required");
       return;
@@ -70,17 +77,22 @@ export function useLoanManagement() {
     const borrowerId = Date.now().toString();
     const loanId = (Date.now() + 1).toString();
 
-    const borrower = { id: borrowerId, name: name.trim(), createdAt: new Date().toISOString() };
+    const borrower = {
+      id: borrowerId,
+      name: name.trim(),
+      createdAt: new Date().toISOString(),
+    };
 
     let totalRepayment = 0;
     const durationWeeks = 26; // fixed for 6 months
-    const durationMonths = 12; // for monthly loan
+    const durationMonths = 12; // 1 year for monthly loan
 
     if (frequency === "weekly") {
-      totalRepayment = amount + 360; // Fixed 360 Rs interest for 6 months
+      const weeklyInterest = 360 / durationWeeks; // evenly spread interest across 26 weeks
+      totalRepayment = amount + weeklyInterest * durationWeeks;
     } else {
       const monthlyInterest = amount * (interestRate / 100);
-      totalRepayment = amount + (monthlyInterest * durationMonths);
+      totalRepayment = amount + monthlyInterest * durationMonths;
     }
 
     const loan = {
@@ -120,11 +132,15 @@ export function useLoanManagement() {
       }
 
       const currentDate = new Date();
-      const lastPayment = loan.payments?.length > 0
-        ? new Date(loan.payments[loan.payments.length - 1].date)
-        : null;
+      const lastPayment =
+        loan.payments?.length > 0
+          ? new Date(loan.payments[loan.payments.length - 1].date)
+          : null;
 
-      const repaymentStart = calculateNextRepaymentDate(new Date(loan.startDate), loan.frequency);
+      const repaymentStart = calculateNextRepaymentDate(
+        new Date(loan.startDate),
+        loan.frequency
+      );
       if (currentDate < repaymentStart) {
         alert("Repayment cannot be made today; it starts next period.");
         return prev;
@@ -139,8 +155,8 @@ export function useLoanManagement() {
 
       if (new Date(loan.nextRepaymentDate) < currentDate) {
         const missedPeriods = Math.floor(
-          (currentDate - new Date(loan.nextRepaymentDate)) / 
-          ((loan.frequency === "monthly" ? 30 : 7) * 24 * 60 * 60 * 1000)
+          (currentDate - new Date(loan.nextRepaymentDate)) /
+            ((loan.frequency === "monthly" ? 30 : 7) * 24 * 60 * 60 * 1000)
         );
         loan.missedPayments += missedPeriods;
       }
@@ -169,10 +185,12 @@ export function useLoanManagement() {
         const monthsTaken = daysTaken / 30;
 
         if (loan.frequency === "weekly") {
-          const yearlyInterest = (interestEarned / loan.originalPrincipal) * (365 / daysTaken) * 100;
+          const yearlyInterest =
+            (interestEarned / loan.originalPrincipal) * (365 / daysTaken) * 100;
           interestEarnedPercentage = parseFloat(yearlyInterest.toFixed(2));
         } else {
-          const monthlyRate = (interestEarned / loan.originalPrincipal) / monthsTaken * 100;
+          const monthlyRate =
+            (interestEarned / loan.originalPrincipal) / monthsTaken * 100;
           interestEarnedPercentage = parseFloat(monthlyRate.toFixed(2));
         }
       }
