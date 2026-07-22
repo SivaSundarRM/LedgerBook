@@ -7,7 +7,7 @@ const { notFound, errorHandler } = require("./middleware/errorHandler");
 
 const app = express();
 
-const allowedOrigins = (process.env.CLIENT_ORIGIN || "https://ledgerbookme.onrender.com/")
+const allowedOrigins = (process.env.CLIENT_ORIGIN || "https://ledgerbookme.onrender.com")
   .split(",")
   .map((origin) => origin.trim());
 
